@@ -58,10 +58,13 @@ We don't rely on the LLM alone. The system uses a **Hybrid Extraction Layer** (L
    ```
 
 4. **Launch the System**
-   ```bash
+   
 # Terminal 1: Start the Backend
+```bash
 python main.py
+```
 
 # Terminal 2: Start the Dashboard
+```bash
 streamlit run dashboard.py
 ```
