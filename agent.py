@@ -85,26 +85,35 @@ def get_honeypot_response(conversation_history: list, persona_name: str = "Uncle
         print(f"[LLM ERROR]: {e}")
 
     # --- PYTHON INTEL EXTRACTION ---
-    extracted_upis = []
-    extracted_banks = []
+    # Initialize empty lists first
+    found_upis = []
+    found_banks = []
+    found_links = []
 
     if conversation_history:
         last_msg = conversation_history[-1]
         if last_msg['role'] == 'user': 
             scammer_text = last_msg['content']
             
-            extracted_upis = re.findall(r"[\w\.\-_]+@[\w]+", scammer_text)
-            extracted_banks = re.findall(r"\b\d{9,18}\b", scammer_text)
+            # 1. Regex for UPI
+            found_upis = re.findall(r"[\w\.\-_]+@[\w]+", scammer_text)
+
+            # 2. Regex for Bank
+            found_banks = re.findall(r"\b\d{9,18}\b", scammer_text)
+
+            # 3. Regex for Phishing Links
+            found_links = re.findall(r"https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+[^\s]*", scammer_text)
             
-            if extracted_upis or extracted_banks:
-                print(f"🕵️ CAPTURED: UPI={extracted_upis} Bank={extracted_banks}")
+            if found_upis or found_banks or found_links:
+                print(f"🕵️ CAPTURED: UPI={found_upis} Bank={found_banks} Links={found_links}")
                 
                 # LOGGING
                 log_entry = {
                     "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     "scam_text": scammer_text[:100] + "...",
-                    "extracted_upi": extracted_upis,
-                    "extracted_bank": extracted_banks,
+                    "extracted_upi": found_upis,
+                    "extracted_bank": found_banks,
+                    "extracted_links": found_links,
                     "persona": persona_name
                 }
                 
@@ -119,8 +128,11 @@ def get_honeypot_response(conversation_history: list, persona_name: str = "Uncle
         "agent_confidence": 100,
         "scammer_strategy": "Active Engagement",
         "reasoning": "Persona Active",
-        "extracted_upi_ids": extracted_upis,
-        "extracted_bank_details": extracted_banks,
+        "extracted_upi_ids": found_upis,         # Changed to use found_upis
+        "extracted_bank_details": found_banks,   # Changed to use found_banks
+        # Note: 'extracted_phishing_links' must exist in schema.py if you add it here.
+        # If schema.py doesn't have it, remove the line below or update schema.py
+        "extracted_phishing_links": found_links, 
         "next_response": data.get("next_response", "I am confusing... please repeat.")
     }
 
