@@ -18,7 +18,7 @@ from langchain_groq import ChatGroq
 from pydantic import BaseModel, Field
 
 # --- CONFIG ---
-HONEYPOT_API_URL = "https://agentic-scam-honeypot-j8mq.onrender.com"
+HONEYPOT_API_URL = "https://agentic-scam-honeypot-j8mq.onrender.com/interact"
 
 scammer_llm = ChatGroq(
     api_key=scammer_api_key,
