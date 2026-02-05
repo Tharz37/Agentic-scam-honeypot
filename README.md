@@ -26,7 +26,7 @@ We don't rely on the LLM alone. The system uses a **Hybrid Extraction Layer** (L
 
 ### 🧠 Adaptive Adversarial Logic
 - **Crash-Proof Architecture:** Self-healing JSON parsers ensure the agent never breaks character.
-- **Human-Like Latency:** Simulates typing speeds and errors to bypass scammer suspicion.
+- **Reinforcement Learning (RL):** A local bandit algorithm learns which persona is most effective at extracting intel and adapts over time.
 - **Trap Triggers:** Autonomously detects when a scammer is hooked and forces a "Leak" scenario.
 
 ## 🛠️ Tech Stack
@@ -35,6 +35,23 @@ We don't rely on the LLM alone. The system uses a **Hybrid Extraction Layer** (L
 - **Frontend:** Streamlit (Real-time "WhatsApp-style" interface).
 - **Backend:** FastAPI.
 - **Security:** Python-Dotenv for key management.
+
+## 🚀 How to Access the Live Demo
+
+### Option 1: Try the Live Dashboard
+👉 **[Click Here to Open App](https://agentic-scam-honeypot.streamlit.app)** *(Link to be updated after deployment)*
+
+### Option 2: Test the Public API (For Judges)
+Send a POST request to our live endpoint:
+**Endpoint:** `https://agentic-honeypot-api.onrender.com/interact` *(Replace with your actual Render URL)*
+
+**Sample Payload:**
+```json
+{
+  "history": [{"role": "user", "content": "Pay your electricity bill immediately."}],
+  "persona": "Uncle Ramesh"
+}
+```
 
 ## 🚀 How to Run Locally
 
