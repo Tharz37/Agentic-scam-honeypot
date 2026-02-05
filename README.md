@@ -39,11 +39,11 @@ We don't rely on the LLM alone. The system uses a **Hybrid Extraction Layer** (L
 ## 🚀 How to Access the Live Demo
 
 ### Option 1: Try the Live Dashboard
-👉 **[Click Here to Open App](https://agentic-scam-honeypot.streamlit.app)** *(Link to be updated after deployment)*
+👉 **[Click Here to Open App](https://agentic-scam-honeypot-yhx5zjsaqu4chxcgkwfyqs.streamlit.app/)** 
 
 ### Option 2: Test the Public API (For Judges)
 Send a POST request to our live endpoint:
-**Endpoint:** `https://agentic-honeypot-api.onrender.com/interact` *(Replace with your actual Render URL)*
+**Endpoint:** `https://agentic-scam-honeypot-j8mq.onrender.com/interact` *(Replace with your actual Render URL)*
 
 **Sample Payload:**
 ```json
