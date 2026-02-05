@@ -43,7 +43,7 @@ We don't rely on the LLM alone. The system uses a **Hybrid Extraction Layer** (L
 
 ### Option 2: Test the Public API (For Judges)
 Send a POST request to our live endpoint:
-**Endpoint:** `https://agentic-scam-honeypot-j8mq.onrender.com/interact` *(Replace with your actual Render URL)*
+**Endpoint:** `https://agentic-scam-honeypot-j8mq.onrender.com/interact` 
 
 **Sample Payload:**
 ```json
